@@ -1,9 +1,15 @@
 #include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
 
-
+#define USUARIO_CORRETO "admin123"
+#define SENHA_CORRETA "senha321"
 #define MAX_LIVROS 100
 #define MAX_USUARIOS 100
 #define MAX_NOME 50
+
+char usuario[50];
+char senha[50];
 
 typedef struct {
     int id;
@@ -31,8 +37,9 @@ int total_livros = 0;
 int total_usuarios = 0;
 int total_emprestimos = 0;
 
-// funcoes
 
+
+// FUNCOES
 void adicionar_livros() {
     if (total_livros < MAX_LIVROS) {
         Livro livro;
@@ -86,10 +93,20 @@ void listar_usuarios() {
     }
 }
 
-void menu() {
+
+
+
+// LIMPAR TELA
+void limpar_tela() {
+    system("cls");
+    system("clear");
+}
+
+// ABRIR MENU 
+void menu_inicial() {
     int opcao;
     do {
-        printf("\n=== Sistema de Biblioteca ===\n");
+        printf("\n=== Biblioteca ===\n");
         printf("1. Adicionar Livro\n");
         printf("2. Listar livros\n");
         printf("3. Adicionar Usuarios\n");
@@ -101,22 +118,27 @@ void menu() {
         switch (opcao) {
 
             case 1:
+                limpar_tela();
                 adicionar_livros();
                 break;
             
             case 2:
+                limpar_tela();
                 listar_livros();
                 break;
 
-            case 3: 
+            case 3:
+                limpar_tela();
                 adicionar_usuario();
                 break;
 
             case 4:
+                limpar_tela();
                 listar_usuarios();
                 break;
 
             case 5:
+                limpar_tela();
                 printf("Saindo...");
                 break;
 
@@ -126,7 +148,30 @@ void menu() {
     } while (opcao != 5);
 }
 
+
+// VERIFICACAO DE LOGIN
+int verificar_login(const char *usuario, const char *senha) {
+    return strcmp(usuario, USUARIO_CORRETO) == 0 && strcmp(senha, SENHA_CORRETA) == 0;
+}
+
+
 int main() {
-    menu();
+
+    printf("------------------------\n");
+    printf("\n Login Biblioteca \n");
+    printf("\n------------------------\n");
+    printf("Login: ");
+    scanf(" %s", &usuario);
+    printf("Senha: ");
+    scanf(" %s", &senha);
+
+    if(verificar_login(usuario, senha)) {
+        limpar_tela();
+        menu_inicial();
+    } else {
+        printf("Usuário ou senha incorretos.\n");
+    }
+
+
     return 0;
 }
