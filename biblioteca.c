@@ -7,6 +7,7 @@
 #define MAX_LIVROS 100
 #define MAX_USUARIOS 100
 #define MAX_NOME 50
+#define MAX_EMPRESTIMOS 100
 
 char usuario[50];
 char senha[50];
@@ -93,6 +94,61 @@ void listar_usuarios() {
     }
 }
 
+// Função para realizar empréstimos
+void realizar_emprestimo() {
+    int usuario_id, livro_id;
+
+    printf("ID do Usuário: ");
+    scanf("%d", &usuario_id);
+    printf("ID do Livro: ");
+    scanf("%d", &livro_id);
+
+    if (usuario_id > 0 && usuario_id <= total_usuarios && livro_id > 0 && livro_id <= total_livros) {
+        if (biblioteca[livro_id - 1].disponivel) {
+            biblioteca[livro_id - 1].disponivel = 0;
+
+            Emprestimo emprestimo;
+            emprestimo.usuario_id = usuario_id;
+            emprestimo.livro_id = livro_id;
+            emprestimos[total_emprestimos++] = emprestimo;
+
+            printf("Empréstimo realizado com sucesso!\n");
+        } else {
+            printf("Livro indisponível para empréstimo!\n");
+        }
+    } else {
+        printf("Usuário ou livro inválido!\n");
+    }
+}
+
+
+// Função para devolver livro
+void devolver_livro() {
+    int livro_id;
+    printf("ID do Livro a ser devolvido: ");
+    scanf("%d", &livro_id);
+
+    if (livro_id > 0 && livro_id <= total_livros && !biblioteca[livro_id - 1].disponivel) {
+        biblioteca[livro_id - 1].disponivel = 1;
+        printf("Livro devolvido com sucesso!\n");
+    } else {
+        printf("Livro não encontrado ou já disponível!\n");
+    }
+}
+
+
+// Função para listar empréstimos
+void listar_emprestimos() {
+    printf("Lista de Empréstimos:\n");
+    for (int i = 0; i < total_emprestimos; i++) {
+        int livro_id = emprestimos[i].livro_id;
+        int usuario_id = emprestimos[i].usuario_id;
+        printf("Livro: %s (ID: %d) | Emprestado para: %s (ID: %d)\n",
+               biblioteca[livro_id - 1].titulo, livro_id,
+               usuarios[usuario_id - 1].nome, usuario_id);
+    }
+}
+
 
 
 
@@ -108,11 +164,14 @@ void menu_inicial() {
     do {
         printf("\n=== Biblioteca ===\n");
         printf("1. Adicionar Livro\n");
-        printf("2. Listar livros\n");
-        printf("3. Adicionar Usuarios\n");
-        printf("4. Listar Usuarios\n");
-        printf("5. Sair\n");
-        printf("Escolha opcao: ");
+        printf("2. Listar Livros\n");
+        printf("3. Adicionar Usuário\n");
+        printf("4. Listar Usuários\n");
+        printf("5. Realizar Empréstimo\n");
+        printf("6. Devolver Livro\n");
+        printf("7. Listar Empréstimos\n");
+        printf("8. Sair\n");
+        printf("Escolha a opção: ");
         scanf("%d", &opcao);
 
         switch (opcao) {
@@ -139,13 +198,27 @@ void menu_inicial() {
 
             case 5:
                 limpar_tela();
-                printf("Saindo...");
+                realizar_emprestimo();
                 break;
 
+            case 6:
+                limpar_tela();
+                devolver_livro();
+                break;
+
+            case 7:
+                limpar_tela();
+                listar_emprestimos();
+                break;
+
+            case 8:
+                limpar_tela();
+                printf("Saindo...\n");
+                break;
             default:
-                printf("Opcao inválida! Tente novamente. \n");
+                printf("Opção inválida! Tente novamente...\n");
         }
-    } while (opcao != 5);
+    } while (opcao != 8);
 }
 
 
