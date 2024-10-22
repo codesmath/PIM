@@ -1,0 +1,26 @@
+---
+triple:          'x86_64-apple-darwin'
+binary-path:     '/Users/victorteixeira/Desktop/PIM/output/biblioteca'
+relocations:
+  - { offsetInCU: 0x26, offset: 0x26, size: 0x8, addend: 0x0, symName: _adicionar_livros, symObjAddr: 0x0, symBinAddr: 0x100001290, symSize: 0x120 }
+  - { offsetInCU: 0x3F, offset: 0x3F, size: 0x8, addend: 0x0, symName: _total_livros, symObjAddr: 0x23F4, symBinAddr: 0x100003000, symSize: 0x0 }
+  - { offsetInCU: 0x5B, offset: 0x5B, size: 0x8, addend: 0x0, symName: _total_usuarios, symObjAddr: 0x23F8, symBinAddr: 0x100003004, symSize: 0x0 }
+  - { offsetInCU: 0x70, offset: 0x70, size: 0x8, addend: 0x0, symName: _total_emprestimos, symObjAddr: 0x23FC, symBinAddr: 0x100003008, symSize: 0x0 }
+  - { offsetInCU: 0x93, offset: 0x93, size: 0x8, addend: 0x0, symName: _usuario, symBinAddr: 0x100005F30, symSize: 0x0 }
+  - { offsetInCU: 0xB4, offset: 0xB4, size: 0x8, addend: 0x0, symName: _senha, symBinAddr: 0x100005EF0, symSize: 0x0 }
+  - { offsetInCU: 0xC9, offset: 0xC9, size: 0x8, addend: 0x0, symName: _biblioteca, symBinAddr: 0x100003010, symSize: 0x0 }
+  - { offsetInCU: 0x136, offset: 0x136, size: 0x8, addend: 0x0, symName: _usuarios, symBinAddr: 0x100005F70, symSize: 0x0 }
+  - { offsetInCU: 0x18B, offset: 0x18B, size: 0x8, addend: 0x0, symName: _emprestimos, symBinAddr: 0x100005BD0, symSize: 0x0 }
+  - { offsetInCU: 0x1C8, offset: 0x1C8, size: 0x8, addend: 0x0, symName: _adicionar_livros, symObjAddr: 0x0, symBinAddr: 0x100001290, symSize: 0x120 }
+  - { offsetInCU: 0x1FB, offset: 0x1FB, size: 0x8, addend: 0x0, symName: _listar_livros, symObjAddr: 0x120, symBinAddr: 0x1000013B0, symSize: 0xD0 }
+  - { offsetInCU: 0x22D, offset: 0x22D, size: 0x8, addend: 0x0, symName: _adicionar_usuario, symObjAddr: 0x1F0, symBinAddr: 0x100001480, symSize: 0xF0 }
+  - { offsetInCU: 0x260, offset: 0x260, size: 0x8, addend: 0x0, symName: _listar_usuarios, symObjAddr: 0x2E0, symBinAddr: 0x100001570, symSize: 0x90 }
+  - { offsetInCU: 0x292, offset: 0x292, size: 0x8, addend: 0x0, symName: _realizar_emprestimo, symObjAddr: 0x370, symBinAddr: 0x100001600, symSize: 0x130 }
+  - { offsetInCU: 0x2E0, offset: 0x2E0, size: 0x8, addend: 0x0, symName: _devolver_livro, symObjAddr: 0x4A0, symBinAddr: 0x100001730, symSize: 0xB0 }
+  - { offsetInCU: 0x304, offset: 0x304, size: 0x8, addend: 0x0, symName: _listar_emprestimos, symObjAddr: 0x550, symBinAddr: 0x1000017E0, symSize: 0xB0 }
+  - { offsetInCU: 0x360, offset: 0x360, size: 0x8, addend: 0x0, symName: _limpar_tela, symObjAddr: 0x600, symBinAddr: 0x100001890, symSize: 0x20 }
+  - { offsetInCU: 0x375, offset: 0x375, size: 0x8, addend: 0x0, symName: _menu_inicial, symObjAddr: 0x620, symBinAddr: 0x1000018B0, symSize: 0x1A0 }
+  - { offsetInCU: 0x399, offset: 0x399, size: 0x8, addend: 0x0, symName: _verificar_login, symObjAddr: 0x7C0, symBinAddr: 0x100001A50, symSize: 0x60 }
+  - { offsetInCU: 0x3CF, offset: 0x3CF, size: 0x8, addend: 0x0, symName: _menu_login, symObjAddr: 0x820, symBinAddr: 0x100001AB0, symSize: 0xB0 }
+  - { offsetInCU: 0x3E4, offset: 0x3E4, size: 0x8, addend: 0x0, symName: _main, symObjAddr: 0x8D0, symBinAddr: 0x100001B60, symSize: 0x1C }
+...

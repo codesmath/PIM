@@ -33,7 +33,7 @@ typedef struct {
 
 Livro biblioteca[MAX_LIVROS];
 Usuario usuarios[MAX_USUARIOS];
-Emprestimo emprestimos[MAX_LIVROS]; // definir limite para emprestimos (aprox 100)
+Emprestimo emprestimos[MAX_LIVROS]; 
 int total_livros = 0;
 int total_usuarios = 0;
 int total_emprestimos = 0;
@@ -227,8 +227,8 @@ int verificar_login(const char *usuario, const char *senha) {
     return strcmp(usuario, USUARIO_CORRETO) == 0 && strcmp(senha, SENHA_CORRETA) == 0;
 }
 
-
-int main() {
+// MENU LOGIN
+void menu_login() {
 
     printf("------------------------\n");
     printf("\n Login Biblioteca \n");
@@ -245,6 +245,11 @@ int main() {
         printf("Usuário ou senha incorretos.\n");
     }
 
+}
 
+int main() {
+
+    menu_login();
     return 0;
+    
 }
