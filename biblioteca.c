@@ -33,39 +33,64 @@ typedef struct {
 
 Livro biblioteca[MAX_LIVROS];
 Usuario usuarios[MAX_USUARIOS];
-Emprestimo emprestimos[MAX_LIVROS]; 
+Emprestimo emprestimos[MAX_LIVROS];
 int total_livros = 0;
 int total_usuarios = 0;
 int total_emprestimos = 0;
 
 
 
-// FUNCOES
+// FUNÇÕES
+// Função para adicionar livros no sistema
 void adicionar_livros() {
     if (total_livros < MAX_LIVROS) {
         Livro livro;
         livro.id = total_livros + 1;
-        printf("Título: ");
+        printf("----------------------------------------\n");
+        printf("|                                      |\n");
+        printf("|       === Adicionar livro ===        |\n");
+        printf("|                                      |\n");
+        printf("|                                       \n");
+        printf("|     Título: ");
+        // necessário ter [^\n] para o scanf ler o titulo ou nome corretos até que o usuário pressione enter!
         scanf(" %[^\n]s", livro.titulo);
-        printf("Autor: ");
+        printf("|                                         \n");
+        printf("|     Autor: ");
         scanf(" %[^\n]s", livro.autor);
-        printf("Ano: ");
+        printf("|                                         \n");
+        printf("|     Ano: ");
         scanf("%d", &livro.ano);
         livro.disponivel = 1;
 
         biblioteca[total_livros++] = livro;
-        printf("Livro adicionado com sucesso!\n");
+        printf("|                                       \n");
+        printf("|    Livro adicionado com sucesso!\n");
+        printf("|                                       \n");
+        printf("----------------------------------------\n\n\n");
     } else {
+        printf("|                                       \n");
         printf("Limite de livros atingidos!\n");
+        printf("|                                       \n");
+        printf("------------------------------------------\n\n\n");
     }
 }
 
+// Estrutura for de repetição para fazer a listagem dos livros com seus devidos ID's
 void listar_livros() {
-    printf("Lista de livros:\n");
+    printf("-----------------------------------------\n");
+    printf("|                                       |\n");
+    printf("|       ==== Lista de livros ====       |\n");
+    printf("|                                       |\n");
+    printf("-----------------------------------------------------------------------------------------------------------\n");
+
     for (int i = 0; i < total_livros; i++) {
-        printf("ID: %d | Título: %s | Autor: %s | Ano: %d | Disponível: %s\n",
+
+        printf("|                                       \n");
+        printf("|     ID: %d | Título: %s | Autor: %s | Ano: %d | Disponível: %s\n",
                 biblioteca[i].id, biblioteca[i].titulo, biblioteca[i].autor,
                 biblioteca[i].ano, biblioteca[i].disponivel ? "Sim" : "Não");
+        printf("|                                       \n");
+        printf("-----------------------------------------------------------------------------------------------------------\n\n\n");
     }
 }
 
@@ -74,23 +99,44 @@ void adicionar_usuario() {
     if (total_usuarios < MAX_USUARIOS) {
         Usuario usuario;
         usuario.id = total_usuarios + 1;
-        printf("Nome: ");
+        printf("------------------------------------------\n");
+        printf("|                                         \n");
+        printf("|        === Adicionar Usuário ===        \n");
+        printf("|                                         \n");
+        printf("|                                         \n");
+        printf("|     Nome: ");
         scanf(" %[^\n]s", usuario.nome);
-        printf("Email: ");
+        printf("|                                         \n");
+        printf("|     Email: ");
         scanf(" %[^\n]s", usuario.email);
 
         usuarios[total_usuarios++] = usuario;
-        printf("Usuário adicionado com sucesso!\n");
+        printf("|                                       \n");
+        printf("|     Usuário adicionado com sucesso!\n");
+        printf("|                                       \n");
+        printf("------------------------------------------\n\n\n");
     } else {
-        printf("Limite de usuarios atingidos!\n");
+        printf("|                                       \n");
+        printf("|     Limite de usuários atingidos!     \n");
+        printf("|                                       \n");
+        printf("------------------------------------------\n\n\n");
     }
 }
 
 void listar_usuarios() {
-    printf("Lista de Usuarios:\n");
+    
+    printf("-------------------------------------------\n");
+    printf("|                                         |\n");
+    printf("|       ==== Lista de usuários ====       |\n");
+    printf("|                                         |\n");
+    printf("-----------------------------------------------------------------------------------------------------------\n");
+    
     for (int i = 0; i < total_usuarios; i++) {
-        printf("ID: %d | Nome: %s | Email: %s\n",
+        printf("|                                       \n");
+        printf("|     ID: %d | Nome: %s | Email: %s\n",
                 usuarios[i].id, usuarios[i].nome, usuarios[i].email);
+        printf("|                                       \n");
+        printf("-----------------------------------------------------------------------------------------------------------\n\n\n");
     }
 }
 
@@ -98,9 +144,15 @@ void listar_usuarios() {
 void realizar_emprestimo() {
     int usuario_id, livro_id;
 
-    printf("ID do Usuário: ");
+    printf("------------------------------------------\n");
+    printf("|                                         \n");
+    printf("|        === Empréstimo ===        \n");
+    printf("|                                         \n");
+    printf("|                                         \n");
+    printf("|     ID do Usuário: ");
     scanf("%d", &usuario_id);
-    printf("ID do Livro: ");
+    printf("|                                         \n");
+    printf("|     ID do Livro: ");
     scanf("%d", &livro_id);
 
     if (usuario_id > 0 && usuario_id <= total_usuarios && livro_id > 0 && livro_id <= total_livros) {
@@ -112,12 +164,21 @@ void realizar_emprestimo() {
             emprestimo.livro_id = livro_id;
             emprestimos[total_emprestimos++] = emprestimo;
 
-            printf("Empréstimo realizado com sucesso!\n");
+            printf("|                                         \n");
+            printf("|     Empréstimo realizado com sucesso!\n");
+            printf("|                                         \n");
+            printf("------------------------------------------\n");
         } else {
-            printf("Livro indisponível para empréstimo!\n");
+            printf("|                                         \n");
+            printf("|     Livro indisponível para empréstimo!\n");
+            printf("|                                         \n");
+            printf("------------------------------------------\n");
         }
     } else {
-        printf("Usuário ou livro inválido!\n");
+        printf("|                                         \n");
+        printf("|     Usuário ou livro inválido!\n");
+        printf("|                                         \n");
+        printf("------------------------------------------\n");
     }
 }
 
@@ -125,27 +186,47 @@ void realizar_emprestimo() {
 // Função para devolver livro
 void devolver_livro() {
     int livro_id;
-    printf("ID do Livro a ser devolvido: ");
+    printf("-------------------------------------------\n");
+    printf("|                                         \n");
+    printf("|        === Devolução de livro ===        \n");
+    printf("|                                         \n");
+    printf("|                                         \n");
+    printf("|     ID do Livro a ser devolvido: ");
     scanf("%d", &livro_id);
 
     if (livro_id > 0 && livro_id <= total_livros && !biblioteca[livro_id - 1].disponivel) {
         biblioteca[livro_id - 1].disponivel = 1;
-        printf("Livro devolvido com sucesso!\n");
+
+        printf("|                                         \n");
+        printf("|     Livro devolvido com sucesso!\n");
+        printf("|                                         \n");
+        printf("-------------------------------------------\n");
     } else {
-        printf("Livro não encontrado ou já disponível!\n");
+        printf("|                                         \n");
+        printf("|     Livro não encontrado ou já disponível!\n");
+        printf("|                                         \n");
+        printf("-------------------------------------------\n");
     }
 }
 
 
 // Função para listar empréstimos
 void listar_emprestimos() {
-    printf("Lista de Empréstimos:\n");
+
+    printf("---------------------------------------------\n");
+    printf("|                                           |\n");
+    printf("|       ==== Lista de empréstimo ====       |\n");
+    printf("|                                           |\n");
+    printf("-----------------------------------------------------------------------------------------------------------\n");
     for (int i = 0; i < total_emprestimos; i++) {
         int livro_id = emprestimos[i].livro_id;
         int usuario_id = emprestimos[i].usuario_id;
-        printf("Livro: %s (ID: %d) | Emprestado para: %s (ID: %d)\n",
+        printf("|                                           \n");
+        printf("|     Livro: %s (ID: %d) | Emprestado para: %s (ID: %d)\n",
                biblioteca[livro_id - 1].titulo, livro_id,
                usuarios[usuario_id - 1].nome, usuario_id);
+        printf("|                                       \n");
+        printf("-----------------------------------------------------------------------------------------------------------\n\n\n");
     }
 }
 
@@ -162,16 +243,24 @@ void limpar_tela() {
 void menu_inicial() {
     int opcao;
     do {
-        printf("\n=== Biblioteca ===\n");
-        printf("1. Adicionar Livro\n");
-        printf("2. Listar Livros\n");
-        printf("3. Adicionar Usuário\n");
-        printf("4. Listar Usuários\n");
-        printf("5. Realizar Empréstimo\n");
-        printf("6. Devolver Livro\n");
-        printf("7. Listar Empréstimos\n");
-        printf("8. Sair\n");
-        printf("Escolha a opção: ");
+        printf("----------------------------------------\n");
+        printf("|                                      |\n");
+        printf("|         ==== Biblioteca ====         |\n");
+        printf("|                                      |\n");
+        printf("----------------------------------------\n");
+        printf("|                                      |\n");
+        printf("|   1. Adicionar Livro                 |\n");
+        printf("|   2. Listar Livros                   |\n");
+        printf("|   3. Adicionar Usuário               |\n");
+        printf("|   4. Listar Usuários                 |\n");
+        printf("|   5. Realizar Empréstimo             |\n");
+        printf("|   6. Devolver Livro                  |\n");
+        printf("|   7. Listar Empréstimos              |\n");
+        printf("|   8. Sair                            |\n");
+        printf("|                                      |\n");
+        printf("----------------------------------------\n");
+        printf("\n");
+        printf("   Escolha a opção: ");
         scanf("%d", &opcao);
 
         switch (opcao) {
@@ -224,32 +313,33 @@ void menu_inicial() {
 
 // VERIFICACAO DE LOGIN
 int verificar_login(const char *usuario, const char *senha) {
+    // strcmp - Função da biblioteca string.h que realiza a verificação do login e senha.
     return strcmp(usuario, USUARIO_CORRETO) == 0 && strcmp(senha, SENHA_CORRETA) == 0;
 }
 
-// MENU LOGIN
-void menu_login() {
 
-    printf("------------------------\n");
-    printf("\n Login Biblioteca \n");
-    printf("\n------------------------\n");
-    printf("Login: ");
+int main() {
+
+    printf("------------------------------------\n");
+    printf("|                                  \n");
+    printf("|         Login Biblioteca         \n");
+    printf("|                                  \n");
+    printf("------------------------------------\n");
+    printf("|                                  \n");
+    printf("|     Login: ");
     scanf(" %s", &usuario);
-    printf("Senha: ");
+    printf("|                                  \n");
+    printf("|     Senha: ");
     scanf(" %s", &senha);
 
     if(verificar_login(usuario, senha)) {
         limpar_tela();
         menu_inicial();
     } else {
-        printf("Usuário ou senha incorretos.\n");
+        printf("|                                   \n");
+        printf("|    Usuário ou senha incorretos.   \n");
+        printf("|                                   \n");
+        printf("------------------------------------\n");
     }
-
-}
-
-int main() {
-
-    menu_login();
     return 0;
-    
 }
