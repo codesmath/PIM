@@ -75,7 +75,6 @@ void adicionar_livros() {
     }
 }
 
-// Estrutura for de repetição para fazer a listagem dos livros com seus devidos ID's
 void listar_livros() {
     printf("-----------------------------------------\n");
     printf("|                                       |\n");
