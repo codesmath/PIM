@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <time.h>
 
 #define USUARIO_CORRETO "admin123"
 #define SENHA_CORRETA "senha321"
@@ -11,6 +12,12 @@
 
 char usuario[50];
 char senha[50];
+
+typedef struct {
+    int dia;
+    int mes;
+    int ano;
+} Data;
 
 typedef struct {
     int id;
@@ -29,6 +36,8 @@ typedef struct {
 typedef struct {
     int usuario_id;
     int livro_id;
+    Data data_emprestimo;
+    Data data_devolucao;
 } Emprestimo;
 
 Livro biblioteca[MAX_LIVROS];
@@ -39,9 +48,6 @@ int total_usuarios = 0;
 int total_emprestimos = 0;
 
 
-
-// FUNÇÕES
-// Função para adicionar livros no sistema
 void adicionar_livros() {
     if (total_livros < MAX_LIVROS) {
         Livro livro;
@@ -69,7 +75,7 @@ void adicionar_livros() {
         printf("----------------------------------------\n\n\n");
     } else {
         printf("|                                       \n");
-        printf("Limite de livros atingidos!\n");
+        printf("|    Limite de livros atingidos!\n");
         printf("|                                       \n");
         printf("------------------------------------------\n\n\n");
     }
@@ -83,13 +89,12 @@ void listar_livros() {
     printf("-----------------------------------------------------------------------------------------------------------\n");
 
     for (int i = 0; i < total_livros; i++) {
-
         printf("|                                       \n");
         printf("|     ID: %d | Título: %s | Autor: %s | Ano: %d | Disponível: %s\n",
                 biblioteca[i].id, biblioteca[i].titulo, biblioteca[i].autor,
                 biblioteca[i].ano, biblioteca[i].disponivel ? "Sim" : "Não");
         printf("|                                       \n");
-        printf("-----------------------------------------------------------------------------------------------------------\n\n\n");
+        printf("-----------------------------------------------------------------------------------------------------------\n");
     }
 }
 
@@ -135,11 +140,10 @@ void listar_usuarios() {
         printf("|     ID: %d | Nome: %s | Email: %s\n",
                 usuarios[i].id, usuarios[i].nome, usuarios[i].email);
         printf("|                                       \n");
-        printf("-----------------------------------------------------------------------------------------------------------\n\n\n");
+        printf("-----------------------------------------------------------------------------------------------------------\n");
     }
 }
 
-// Função para realizar empréstimos
 void realizar_emprestimo() {
     int usuario_id, livro_id;
 
@@ -161,10 +165,11 @@ void realizar_emprestimo() {
             Emprestimo emprestimo;
             emprestimo.usuario_id = usuario_id;
             emprestimo.livro_id = livro_id;
+            emprestimo.data_emprestimo = data_atual();
             emprestimos[total_emprestimos++] = emprestimo;
 
             printf("|                                         \n");
-            printf("|     Empréstimo realizado com sucesso!\n");
+            printf("|     Empréstimo realizado em %02d/%02d/%d\n", emprestimo.data_emprestimo.dia, emprestimo.data_emprestimo.mes, emprestimo.data_emprestimo.ano);
             printf("|                                         \n");
             printf("------------------------------------------\n");
         } else {
@@ -182,7 +187,6 @@ void realizar_emprestimo() {
 }
 
 
-// Função para devolver livro
 void devolver_livro() {
     int livro_id;
     printf("-------------------------------------------\n");
@@ -209,7 +213,6 @@ void devolver_livro() {
 }
 
 
-// Função para listar empréstimos
 void listar_emprestimos() {
 
     printf("---------------------------------------------\n");
@@ -225,20 +228,31 @@ void listar_emprestimos() {
                biblioteca[livro_id - 1].titulo, livro_id,
                usuarios[usuario_id - 1].nome, usuario_id);
         printf("|                                       \n");
-        printf("-----------------------------------------------------------------------------------------------------------\n\n\n");
+        printf("-----------------------------------------------------------------------------------------------------------\n");
     }
 }
 
 
-
-
-// LIMPAR TELA
 void limpar_tela() {
     system("cls");
     system("clear");
 }
 
-// ABRIR MENU 
+
+Data data_atual() {
+
+    time_t t = time(NULL);
+    struct tm tm = *localtime(&t);
+
+    Data data;
+    data.dia = tm.tm_mday;
+    data.mes = tm.tm_mon + 1;
+    data.ano = tm.tm_year + 1900;
+    return data;
+
+}
+
+
 void menu_inicial() {
     int opcao;
     do {
@@ -310,7 +324,6 @@ void menu_inicial() {
 }
 
 
-// VERIFICACAO DE LOGIN
 int verificar_login(const char *usuario, const char *senha) {
     // strcmp - Função da biblioteca string.h que realiza a verificação do login e senha.
     return strcmp(usuario, USUARIO_CORRETO) == 0 && strcmp(senha, SENHA_CORRETA) == 0;
