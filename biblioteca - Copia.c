@@ -19,19 +19,6 @@ typedef struct {
     int ano;
 } Data;
 
-Data data_atual() {
-
-    time_t t = time(NULL);
-    struct tm tm = *localtime(&t);
-
-    Data data;
-    data.dia = tm.tm_mday;
-    data.mes = tm.tm_mon + 1;
-    data.ano = tm.tm_year + 1900;
-    return data;
-
-}
-
 typedef struct {
     int id;
     char titulo[MAX_NOME];
@@ -249,6 +236,20 @@ void listar_emprestimos() {
 void limpar_tela() {
     system("cls");
     system("clear");
+}
+
+
+Data data_atual() {
+
+    time_t t = time(NULL);
+    struct tm tm = *localtime(&t);
+
+    Data data;
+    data.dia = tm.tm_mday;
+    data.mes = tm.tm_mon + 1;
+    data.ano = tm.tm_year + 1900;
+    return data;
+
 }
 
 

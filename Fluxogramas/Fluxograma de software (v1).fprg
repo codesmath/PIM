@@ -1,0 +1,216 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="4.2">
+    <attributes>
+        <attribute name="name" value="Fluxograma de software (2)"/>
+        <attribute name="authors" value="mathe"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2024-09-07 01:28:29 "/>
+        <attribute name="created" value="bWF0aGU7QVNQSVJFLTM7MjAyNC0wOS0wMzsiMTI6NDQ6NTIgIjsyMjY4"/>
+        <attribute name="edited" value="bWF0aGU7QVNQSVJFLTM7MjAyNC0wOS0wMzsiMTI6NDg6MDggIjszO21hdGhlO0FTUElSRS0zOzIwMjQtMDktMDE7IjA3OjU0OjEwICI7Rmx1eG9ncmFtYSBkZSBzb2Z0d2FyZS5mcHJnOzc0Mjk="/>
+        <attribute name="edited" value="bWF0aGU7QVNQSVJFLTM7MjAyNC0wOS0wNzsiMDE6Mjg6MjkgIjszOzIzODY="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <comment text="Fluxograma de Software&#13;&#10;"/>
+            <declare name="usuario" type="Integer" array="False" size=""/>
+            <output expression="&quot;Ol&#225; querido(a)! Sou seu atendente virtual da (nome da biblioteca).&quot;" newline="True"/>
+            <output expression="&quot;Digite 1 para Funcion&#225;rio ou 2 para Cliente: &quot;" newline="True"/>
+            <input variable="usuario"/>
+            <if expression="usuario=1">
+                <then>
+                    <comment text="fluxo de funcionario"/>
+                    <call expression="funcionario"/>
+                </then>
+                <else>
+                    <comment text="fluxo de cliente"/>
+                    <call expression="cliente"/>
+                </else>
+            </if>
+        </body>
+    </function>
+    <function name="aluguel" type="None" variable="">
+        <parameters/>
+        <body>
+            <comment text="fluxo de aluguel"/>
+            <declare name="livronome" type="String" array="False" size=""/>
+            <output expression="&quot;Qual o nome do livro?&quot;" newline="True"/>
+            <input variable="livronome"/>
+            <output expression="&quot;Aqui est&#225;: &quot;&amp;livronome" newline="True"/>
+            <output expression="&quot;O prazo de devolu&#231;&#227;o &#233; de 2 semanas. Boa leitura!&quot;" newline="True"/>
+        </body>
+    </function>
+    <function name="cadastrolivro" type="None" variable="">
+        <parameters/>
+        <body>
+            <comment text="fluxo de cadastro&#13;&#10;"/>
+            <comment text="informa&#231;&#245;es de cadastro do livro"/>
+            <declare name="livronome, autor" type="String" array="False" size=""/>
+            <declare name="ano" type="Integer" array="False" size=""/>
+            <output expression="&quot;Digite o nome do livro:&quot;" newline="True"/>
+            <input variable="livronome"/>
+            <output expression="&quot;Qual o autor do livro?&quot;" newline="True"/>
+            <input variable="autor"/>
+            <output expression="&quot;Qual o ano de lan&#231;amento do livro?&quot;" newline="True"/>
+            <input variable="ano"/>
+            <output expression="&quot;----------------------------------------------------------&quot;" newline="True"/>
+            <output expression="&quot;------------------Relat&#243;rio de Cadastro:------------------&quot;" newline="True"/>
+            <output expression="&quot;Livro: &quot;&amp;livronome" newline="True"/>
+            <output expression="&quot;Autor: &quot;&amp;autor" newline="True"/>
+            <output expression="&quot;Ano de lan&#231;amento: &quot;&amp;ano" newline="True"/>
+            <output expression="&quot;-----------------Cadastrado com sucesso!------------------&quot;" newline="True"/>
+            <output expression="&quot;----------------------------------------------------------&quot;" newline="True"/>
+        </body>
+    </function>
+    <function name="cliente" type="None" variable="">
+        <parameters/>
+        <body>
+            <comment text="fluxo de cliente"/>
+            <declare name="servi&#231;o" type="Integer" array="False" size=""/>
+            <comment text="variaveis de loguin"/>
+            <declare name="nome" type="String" array="False" size=""/>
+            <output expression="&quot;Por favor, digite seu nome:&quot;" newline="True"/>
+            <input variable="nome"/>
+            <output expression="&quot;Ol&#225; &quot;&amp;nome" newline="True"/>
+            <output expression="&quot;Seja bem vindo(a)!&quot;" newline="True"/>
+            <output expression="&quot;Como posso te ajudar?&quot;" newline="True"/>
+            <output expression="&quot;Digite 1 para Alugar um livro ou 2 para Devolver um livro.&quot;" newline="True"/>
+            <input variable="servi&#231;o"/>
+            <comment text="escolha do tipo de servi&#231;o"/>
+            <do expression="servi&#231;o&lt;3">
+                <if expression="servi&#231;o=1">
+                    <then>
+                        <comment text="aluguel"/>
+                        <call expression="aluguel"/>
+                    </then>
+                    <else>
+                        <comment text="devolu&#231;&#227;o"/>
+                        <call expression="devolu&#231;&#227;o"/>
+                    </else>
+                </if>
+                <comment text="inicio do looping"/>
+                <output expression="&quot;Posso ajudar em mais alguma coisa?&quot;" newline="True"/>
+                <output expression="&quot;Digite 1 para Alugar um livro, digite 2 para Devolver um livro ou digite 3 para Sair.&quot;" newline="True"/>
+                <input variable="servi&#231;o"/>
+                <while expression="servi&#231;o&gt;3">
+                    <output expression="&quot;N&#227;o podemos identificar sua resposta! Revise e digite novamente, conforme o menu.&quot;" newline="True"/>
+                    <input variable="servi&#231;o"/>
+                    <while expression="servi&#231;o&lt;1">
+                        <output expression="&quot;N&#227;o podemos identificar sua resposta! Revise e digite novamente, conforme o menu.&quot;" newline="True"/>
+                        <input variable="servi&#231;o"/>
+                    </while>
+                </while>
+            </do>
+            <output expression="&quot;Obrigado pela prefer&#234;ncia!&quot;" newline="True"/>
+        </body>
+    </function>
+    <function name="devolu&#231;&#227;o" type="None" variable="">
+        <parameters/>
+        <body>
+            <comment text="fluxo de devolu&#231;&#227;o"/>
+            <declare name="livronome, autor" type="String" array="False" size=""/>
+            <declare name="prazo, ano" type="Integer" array="False" size=""/>
+            <output expression="&quot;Digite o nome do livro:&quot;" newline="True"/>
+            <input variable="livronome"/>
+            <output expression="&quot;Qual o autor do livro?&quot;" newline="True"/>
+            <input variable="autor"/>
+            <output expression="&quot;Qual o ano de lan&#231;amento do livro?&quot;" newline="True"/>
+            <input variable="ano"/>
+            <output expression="&quot;Quantos dias voc&#234; ficou com o livro?&quot;" newline="True"/>
+            <input variable="prazo"/>
+            <if expression="prazo&lt;14">
+                <then>
+                    <comment text="dentro do prazo"/>
+                    <output expression="&quot;----------------------------------------------------------&quot;" newline="True"/>
+                    <output expression="&quot;-----------------Relat&#243;rio de Devolu&#231;&#227;o:-----------------&quot;" newline="True"/>
+                    <output expression="&quot;Livro: &quot;&amp;livronome" newline="True"/>
+                    <output expression="&quot;Autor: &quot;&amp;autor" newline="True"/>
+                    <output expression="&quot;Ano de lan&#231;amento: &quot;&amp;ano" newline="True"/>
+                    <output expression="&quot;Situa&#231;&#227;o: Dentro do prazo&quot;" newline="True"/>
+                    <output expression="&quot;-----------------Devolvido com sucesso!------------------&quot;" newline="True"/>
+                    <output expression="&quot;----------------------------------------------------------&quot;" newline="True"/>
+                </then>
+                <else>
+                    <comment text="fora do prazo (atraso)"/>
+                    <output expression="&quot;----------------------------------------------------------&quot;" newline="True"/>
+                    <output expression="&quot;-----------------Relat&#243;rio de Devolu&#231;&#227;o:-----------------&quot;" newline="True"/>
+                    <output expression="&quot;Livro: &quot;&amp;livronome" newline="True"/>
+                    <output expression="&quot;Autor: &quot;&amp;autor" newline="True"/>
+                    <output expression="&quot;Ano de lan&#231;amento: &quot;&amp;ano" newline="True"/>
+                    <output expression="&quot;Situa&#231;&#227;o: Fora do prazo&quot;" newline="True"/>
+                    <output expression="&quot;-----------------Devolvido com sucesso!------------------&quot;" newline="True"/>
+                    <output expression="&quot;----------------------------------------------------------&quot;" newline="True"/>
+                    <output expression="&quot;-------------------------ALERTA!!!-------------------------&quot;" newline="True"/>
+                    <output expression="&quot;Voc&#234; ultrapassou o prazo para devolver o livro!&quot;" newline="True"/>
+                    <output expression="&quot;Por cons&#234;quencia, pegar&#225; uma suspens&#227;o de 30 dias da Biblioteca.&quot;" newline="True"/>
+                    <output expression="&quot;Lembrando que se atrazar o prazo 3 vezes, ficar&#225; suspenso permanentemente!&quot;" newline="True"/>
+                    <output expression="&quot;Agradecemos a aten&#231;&#227;o.&quot;" newline="True"/>
+                    <output expression="&quot;----------------------------------------------------------&quot;" newline="True"/>
+                </else>
+            </if>
+        </body>
+    </function>
+    <function name="exclus&#227;olivro" type="None" variable="">
+        <parameters/>
+        <body>
+            <comment text="Fluxo de exclus&#227;o"/>
+            <comment text="informa&#231;&#245;es do livro"/>
+            <declare name="livronome, autor" type="String" array="False" size=""/>
+            <declare name="ano" type="Integer" array="False" size=""/>
+            <output expression="&quot;Digite o nome do livro:&quot;" newline="True"/>
+            <input variable="livronome"/>
+            <output expression="&quot;Qual o autor do livro?&quot;" newline="True"/>
+            <input variable="autor"/>
+            <output expression="&quot;Qual o ano de lan&#231;amento do livro?&quot;" newline="True"/>
+            <input variable="ano"/>
+            <output expression="&quot;----------------------------------------------------------&quot;" newline="True"/>
+            <output expression="&quot;------------------Relat&#243;rio de Exclus&#227;o:------------------&quot;" newline="True"/>
+            <output expression="&quot;Livro: &quot;&amp;livronome" newline="True"/>
+            <output expression="&quot;Autor: &quot;&amp;autor" newline="True"/>
+            <output expression="&quot;Ano de lan&#231;amento: &quot;&amp;ano" newline="True"/>
+            <output expression="&quot;------------------Exclu&#237;do com sucesso!------------------&quot;" newline="True"/>
+            <output expression="&quot;----------------------------------------------------------&quot;" newline="True"/>
+        </body>
+    </function>
+    <function name="funcionario" type="None" variable="">
+        <parameters/>
+        <body>
+            <comment text="fluxo de funcion&#225;rio&#13;&#10;"/>
+            <declare name="servi&#231;o" type="Integer" array="False" size=""/>
+            <comment text="vari&#225;vel de login&#13;&#10;"/>
+            <declare name="nome" type="String" array="False" size=""/>
+            <output expression="&quot;Digite o nome do bibliotec&#225;rio:&quot;" newline="True"/>
+            <input variable="nome"/>
+            <output expression="&quot;Ol&#225; &quot;&amp;nome" newline="True"/>
+            <output expression="&quot;Bem vindo(a) de volta!&quot;" newline="True"/>
+            <output expression="&quot;Como posso te ajudar?&quot;" newline="True"/>
+            <output expression="&quot;Digite 1 para cadastrar um livro ou 2 para excluir um livro.&quot;" newline="True"/>
+            <input variable="servi&#231;o"/>
+            <do expression="servi&#231;o&lt;3">
+                <comment text="inicio do looping"/>
+                <if expression="servi&#231;o=1">
+                    <then>
+                        <comment text="fluxo de Cadastro"/>
+                        <call expression="cadastrolivro"/>
+                    </then>
+                    <else>
+                        <comment text="Fluxo de Exclus&#227;o"/>
+                        <call expression="exclus&#227;olivro"/>
+                    </else>
+                </if>
+                <output expression="&quot;Posso te ajudar em mais alguma coisa?&quot;" newline="True"/>
+                <output expression="&quot;Digite 1 para Cadastrar um livro, 2 para Excluir um livro ou 3 para Sair.&quot;" newline="True"/>
+                <input variable="servi&#231;o"/>
+                <while expression="servi&#231;o&gt;3">
+                    <output expression="&quot;N&#227;o podemos identificar sua resposta! Revise e digite novamente, conforme o menu.&quot;" newline="True"/>
+                    <input variable="servi&#231;o"/>
+                    <while expression="servi&#231;o&lt;1">
+                        <output expression="&quot;N&#227;o podemos identificar sua resposta! Revise e digite novamente, conforme o menu.&quot;" newline="True"/>
+                        <input variable="servi&#231;o"/>
+                    </while>
+                </while>
+            </do>
+            <output expression="&quot;Obrigado pelo seu servi&#231;o!&quot;" newline="True"/>
+        </body>
+    </function>
+</flowgorithm>

@@ -1,0 +1,230 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="4.2">
+    <attributes>
+        <attribute name="name" value="FLuxograma de biblioteca"/>
+        <attribute name="authors" value="mathe"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2024-10-01 04:27:59 "/>
+        <attribute name="created" value="bWF0aGU7QVNQSVJFLTM7MjAyNC0wOS0zMDsiMTE6NTg6MzQgIjsyMjcy"/>
+        <attribute name="edited" value="bWF0aGU7QVNQSVJFLTM7MjAyNC0xMC0wMTsiMDQ6Mjc6NTkgIjsxNDsyNDI3"/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <comment text="Tela Inicial"/>
+            <declare name="op&#231;ao" type="Integer" array="False" size=""/>
+            <output expression="&quot;Seja bem-vindo(a)!&quot;" newline="True"/>
+            <do expression="op&#231;ao!=0">
+                <comment text="Loop para a tela inicial"/>
+                <output expression="&quot;Escolha uma op&#231;&#227;o:&quot;" newline="True"/>
+                <output expression="&quot;1. Cadastro.&quot;" newline="True"/>
+                <output expression="&quot;2. Login.&quot;" newline="True"/>
+                <output expression="&quot;0. Sair.&quot;" newline="True"/>
+                <input variable="op&#231;ao"/>
+                <if expression="op&#231;ao=0">
+                    <then>
+                        <comment text="sair do programa"/>
+                    </then>
+                    <else>
+                        <comment text="Sistema de cadastro/login de usuario"/>
+                        <if expression="op&#231;ao=1">
+                            <then>
+                                <call expression="CadastroUsuario"/>
+                            </then>
+                            <else>
+                                <call expression="LoginUsuario"/>
+                                <call expression="MenuInicial"/>
+                            </else>
+                        </if>
+                    </else>
+                </if>
+            </do>
+        </body>
+    </function>
+    <function name="Adicionar" type="None" variable="">
+        <parameters/>
+        <body>
+            <comment text="Adicionar Livros"/>
+            <declare name="nomecad, autorcad, generocad" type="String" array="False" size=""/>
+            <declare name="anocad" type="Integer" array="False" size=""/>
+            <open expression="&quot;livros&quot;" mode="write"/>
+            <output expression="&quot;Nome do livro:&quot;" newline="True"/>
+            <input variable="nomecad"/>
+            <write expression="nomecad"/>
+            <output expression="&quot;Autor:&quot;" newline="True"/>
+            <input variable="autorcad"/>
+            <write expression="autorcad"/>
+            <output expression="&quot;G&#234;nero:&quot;" newline="True"/>
+            <input variable="generocad"/>
+            <write expression="generocad"/>
+            <output expression="&quot;Ano de lan&#231;amento:&quot;" newline="True"/>
+            <input variable="anocad"/>
+            <write expression="anocad"/>
+            <close mode="write"/>
+            <output expression="&quot;Livro cadastrado com sucesso!&quot;" newline="True"/>
+        </body>
+    </function>
+    <function name="CadastroUsuario" type="None" variable="">
+        <parameters/>
+        <body>
+            <comment text="Cadastro de Usuario"/>
+            <declare name="emailcad, senhacad, conf" type="String" array="False" size=""/>
+            <open expression="&quot;cadastro&quot;" mode="write"/>
+            <output expression="&quot;Digite seu e-mail:&quot;" newline="True"/>
+            <input variable="emailcad"/>
+            <write expression="emailcad"/>
+            <output expression="&quot;Digite sua senha:&quot;" newline="True"/>
+            <input variable="senhacad"/>
+            <do expression="senhacad!=conf">
+                <output expression="&quot;Confirme sua senha:&quot;" newline="True"/>
+                <input variable="conf"/>
+            </do>
+            <write expression="senhacad"/>
+            <close mode="write"/>
+            <output expression="&quot;Usu&#225;rio cadastrado com sucesso!&quot;" newline="True"/>
+        </body>
+    </function>
+    <function name="Emprestimo" type="None" variable="">
+        <parameters/>
+        <body>
+            <comment text="Gerenciamento de empr&#233;stimos"/>
+            <do expression="">
+                <output expression="&quot;Escolha uma op&#231;&#227;o:&quot;" newline="True"/>
+                <output expression="&quot;1. Em atraso.&quot;" newline="True"/>
+                <output expression="&quot;2. Pendentes.&quot;" newline="True"/>
+                <output expression="&quot;3. Em entregues.&quot;" newline="True"/>
+            </do>
+        </body>
+    </function>
+    <function name="Galeria" type="None" variable="">
+        <parameters/>
+        <body>
+            <comment text="Galeria de livros"/>
+            <output expression="&quot;4&quot;" newline="True"/>
+        </body>
+    </function>
+    <function name="Livros" type="None" variable="">
+        <parameters/>
+        <body>
+            <comment text="Adicionar/Removar livros"/>
+            <declare name="op&#231;ao" type="Integer" array="False" size=""/>
+            <do expression="op&#231;ao!=0">
+                <output expression="&quot;Escolha uma op&#231;&#227;o:&quot;" newline="True"/>
+                <output expression="&quot;1. Adicionar livro.&quot;" newline="True"/>
+                <output expression="&quot;2. Remover livro.&quot;" newline="True"/>
+                <output expression="&quot;0. Sair.&quot;" newline="True"/>
+                <input variable="op&#231;ao"/>
+                <if expression="op&#231;ao=0">
+                    <then/>
+                    <else>
+                        <if expression="op&#231;ao=1">
+                            <then>
+                                <call expression="Adicionar"/>
+                            </then>
+                            <else>
+                                <call expression="Remover"/>
+                            </else>
+                        </if>
+                    </else>
+                </if>
+            </do>
+        </body>
+    </function>
+    <function name="LoginUsuario" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="email, senha, emailcad, senhacad" type="String" array="False" size=""/>
+            <open expression="&quot;cadastro&quot;" mode="read"/>
+            <output expression="&quot;Digite seu e-mail:&quot;" newline="True"/>
+            <input variable="email"/>
+            <output expression="&quot;Digite sua senha:&quot;" newline="True"/>
+            <input variable="senha"/>
+            <comment text=""/>
+            <read variable="emailcad"/>
+            <read variable="senhacad"/>
+            <while expression="email!=emailcad &amp;&amp; senha!=senhacad">
+                <output expression="&quot;E-mail ou senha inv&#225;lidos! Tente novamente.&quot;" newline="True"/>
+                <output expression="&quot;Digite seu e-mail:&quot;" newline="True"/>
+                <input variable="email"/>
+                <output expression="&quot;Digite sua senha:&quot;" newline="True"/>
+                <input variable="senha"/>
+            </while>
+            <close mode="read"/>
+        </body>
+    </function>
+    <function name="MenuInicial" type="None" variable="">
+        <parameters/>
+        <body>
+            <comment text="Menu Inicial do bibliotec&#225;rio"/>
+            <declare name="op&#231;ao" type="Integer" array="False" size=""/>
+            <do expression="op&#231;ao!=0">
+                <comment text="Loop do Menu Inicial"/>
+                <output expression="&quot;Escolha uma op&#231;&#227;o:&quot;" newline="True"/>
+                <output expression="&quot;1. Adicionar/Remover livros.&quot;" newline="True"/>
+                <output expression="&quot;2. Gerenciamento de empr&#233;stimos.&quot;" newline="True"/>
+                <output expression="&quot;3. Emiss&#227;o de relat&#243;rios.&quot;" newline="True"/>
+                <output expression="&quot;4. Galeria de livros.&quot;" newline="True"/>
+                <output expression="&quot;0. Sair.&quot;" newline="True"/>
+                <input variable="op&#231;ao"/>
+                <if expression="op&#231;ao=0">
+                    <then/>
+                    <else>
+                        <if expression="op&#231;ao=1">
+                            <then>
+                                <call expression="Livros"/>
+                            </then>
+                            <else>
+                                <if expression="op&#231;ao=2">
+                                    <then>
+                                        <call expression="Emprestimos"/>
+                                    </then>
+                                    <else>
+                                        <if expression="op&#231;ao=3">
+                                            <then>
+                                                <call expression="Relatorio"/>
+                                            </then>
+                                            <else>
+                                                <call expression="Galeria"/>
+                                            </else>
+                                        </if>
+                                    </else>
+                                </if>
+                            </else>
+                        </if>
+                    </else>
+                </if>
+            </do>
+        </body>
+    </function>
+    <function name="Relatorio" type="None" variable="">
+        <parameters/>
+        <body>
+            <comment text="Emiss&#227;o de relat&#243;rios"/>
+            <output expression="&quot;3&quot;" newline="True"/>
+        </body>
+    </function>
+    <function name="Remover" type="None" variable="">
+        <parameters/>
+        <body>
+            <comment text="Remover livros"/>
+            <declare name="nomerem" type="String" array="False" size=""/>
+            <declare name="nomecad" type="String" array="False" size=""/>
+            <open expression="&quot;livros&quot;" mode="read"/>
+            <read variable="nomecad"/>
+            <close mode="read"/>
+            <output expression="&quot;Nome do livro:&quot;" newline="True"/>
+            <input variable="nomerem"/>
+            <if expression="nomecad!=nomerem">
+                <then>
+                    <output expression="&quot;Este livro n&#227;o est&#225; em nossa biblioteca. Certifique-se e tente novamente.&quot;" newline="True"/>
+                </then>
+                <else>
+                    <open expression="&quot;livros&quot;" mode="write"/>
+                    <write expression="nomecad = &quot;livro removido&quot;"/>
+                    <close mode="write"/>
+                    <output expression="&quot;Livro removido com sucesso!&quot;" newline="True"/>
+                </else>
+            </if>
+        </body>
+    </function>
+</flowgorithm>

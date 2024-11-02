@@ -1,0 +1,194 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="4.2">
+    <attributes>
+        <attribute name="name" value="biblioteca.fluxograma"/>
+        <attribute name="authors" value="mathe"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2024-10-30 08:38:47 "/>
+        <attribute name="created" value="bWF0aGU7QVNQSVJFLTM7MjAyNC0xMC0yMjsiMDQ6MDI6MDQgIjsyMjUz"/>
+        <attribute name="edited" value="bWF0aGU7QVNQSVJFLTM7MjAyNC0xMC0zMDsiMDg6Mzg6NDcgIjs0OzIzODM="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <comment text="v&#225;riaveis de login"/>
+            <declare name="USUARIOCORRETO, SENHACORRETA, usuario, senha" type="String" array="False" size=""/>
+            <assign variable="USUARIOCORRETO" expression="admin123"/>
+            <assign variable="SENHACORRETA" expression="senha321"/>
+            <comment text="Tela de login"/>
+            <output expression="&quot;=== Login Biblioteca ===&quot;" newline="True"/>
+            <output expression="&quot; &quot;" newline="True"/>
+            <output expression="&quot;Login: &quot;" newline="True"/>
+            <input variable="usuario"/>
+            <output expression="&quot;Senha: &quot;" newline="True"/>
+            <input variable="senha"/>
+            <if expression="(usuario = USUARIOCORRETO) &amp;&amp; (senha = SENHACORRETA)">
+                <then>
+                    <call expression="menuinicial"/>
+                </then>
+                <else>
+                    <output expression="&quot;Usuario ou senha incorretos.&quot;" newline="True"/>
+                </else>
+            </if>
+        </body>
+    </function>
+    <function name="adicionarlivro" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="titulo, autor" type="String" array="False" size=""/>
+            <declare name="ano" type="Integer" array="False" size=""/>
+            <output expression="&quot;T&#237;tulo: &quot;" newline="True"/>
+            <input variable="titulo"/>
+            <output expression="&quot;Autor: &quot;" newline="True"/>
+            <input variable="autor"/>
+            <output expression="&quot;Ano: &quot;" newline="True"/>
+            <input variable="ano"/>
+            <output expression="&quot;Livro adicionado com sucesso!&quot;" newline="True"/>
+            <comment text="O livro receber&#225; uma id onde ficar&#225; reservado&#13;&#10;"/>
+            <output expression="&quot; &quot;" newline="True"/>
+        </body>
+    </function>
+    <function name="adicionarusuario" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="nome, email" type="String" array="False" size=""/>
+            <output expression="&quot;Nome: &quot;" newline="True"/>
+            <input variable="nome"/>
+            <output expression="&quot;E-mail: &quot;" newline="True"/>
+            <input variable="email"/>
+            <output expression="&quot;Usu&#225;rio adicionado com sucesso!&quot;" newline="True"/>
+            <comment text="O usu&#225;rio receber&#225; uma id onde ficar&#225; reservado"/>
+            <output expression="&quot; &quot;" newline="True"/>
+        </body>
+    </function>
+    <function name="devolverlivro" type="None" variable="">
+        <parameters/>
+        <body>
+            <declare name="livroid" type="Integer" array="False" size=""/>
+            <output expression="&quot;ID do livro a ser devovido: &quot;" newline="True"/>
+            <input variable="livroid"/>
+            <if expression="(livroid &gt; 0) &amp;&amp; (livroid &lt;= 100)">
+                <then>
+                    <output expression="&quot;Livro devolvido com sucesso!&quot;" newline="True"/>
+                </then>
+                <else>
+                    <output expression="&quot;Livro n&#227;o encontrado...&quot;" newline="True"/>
+                </else>
+            </if>
+        </body>
+    </function>
+    <function name="listaremprestimos" type="None" variable="">
+        <parameters/>
+        <body>
+            <comment text="Lista de emprestimos (recursos base)"/>
+            <output expression="&quot;Livro: 'nome do livro' (ID: 1-100) | Emprestado para: 'nome do usuario' (ID: 1-100) | Realizado em: (data)&quot;" newline="True"/>
+        </body>
+    </function>
+    <function name="listarlivros" type="None" variable="">
+        <parameters/>
+        <body>
+            <comment text="Lista de livros (recursos base)"/>
+            <output expression="&quot;ID: (1 a 100) | T&#237;tulo: - | Ano: - | Dispon&#237;vel: Sim/N&#227;o&quot;" newline="True"/>
+            <output expression="&quot; &quot;" newline="True"/>
+        </body>
+    </function>
+    <function name="listarusuarios" type="None" variable="">
+        <parameters/>
+        <body>
+            <comment text="Lista de usu&#225;rios (recursos base)"/>
+            <output expression="&quot;ID: (1 ao 100) | Nome: - | E-mail: -&quot;" newline="True"/>
+            <output expression="&quot; &quot;" newline="True"/>
+        </body>
+    </function>
+    <function name="menuinicial" type="None" variable="">
+        <parameters/>
+        <body>
+            <comment text="Tela de menu"/>
+            <declare name="opcao" type="Integer" array="False" size=""/>
+            <do expression="">
+                <output expression="&quot;=== Biblioteca ===&quot;" newline="True"/>
+                <output expression="&quot;1. Adicionar Livro&quot;" newline="True"/>
+                <output expression="&quot;2. Listar Livros&quot;" newline="True"/>
+                <output expression="&quot;3. Adicionar Usu&#225;rio&quot;" newline="True"/>
+                <output expression="&quot;4. Listar Usu&#225;rios&quot;" newline="True"/>
+                <output expression="&quot;5. Realizar Empr&#233;stimo&quot;" newline="True"/>
+                <output expression="&quot;6. Devolver Livro&quot;" newline="True"/>
+                <output expression="&quot;7. Listar Empr&#233;stimos&quot;" newline="True"/>
+                <output expression="&quot;8. Sair&quot;" newline="True"/>
+                <output expression="&quot;Escolha a op&#231;&#227;o: &quot;" newline="True"/>
+                <input variable="opcao"/>
+                <if expression="opcao = 8">
+                    <then>
+                        <output expression="&quot;Saindo...&quot;" newline="True"/>
+                    </then>
+                    <else/>
+                </if>
+                <if expression="opcao = 1">
+                    <then>
+                        <call expression="adicionarlivro"/>
+                    </then>
+                    <else/>
+                </if>
+                <if expression="opcao = 2">
+                    <then>
+                        <call expression="listarlivros"/>
+                    </then>
+                    <else/>
+                </if>
+                <if expression="opcao = 3">
+                    <then>
+                        <call expression="adicionarusuario"/>
+                    </then>
+                    <else/>
+                </if>
+                <if expression="opcao = 4">
+                    <then>
+                        <call expression="listarusuarios"/>
+                    </then>
+                    <else/>
+                </if>
+                <if expression="opcao = 5">
+                    <then>
+                        <call expression="realizaremprestimo"/>
+                    </then>
+                    <else/>
+                </if>
+                <if expression="opcao = 6">
+                    <then>
+                        <call expression="devolverlivro"/>
+                    </then>
+                    <else/>
+                </if>
+                <if expression="opcao = 7">
+                    <then>
+                        <call expression="listaremprestimos"/>
+                    </then>
+                    <else>
+                        <output expression="&quot;Op&#231;&#227;o inv&#225;lida! Tente novamente.&quot;" newline="True"/>
+                    </else>
+                </if>
+            </do>
+        </body>
+    </function>
+    <function name="realizaremprestimo" type="None" variable="">
+        <parameters/>
+        <body>
+            <comment text="Identifica&#231;&#245;es"/>
+            <declare name="usuarioid, livroid" type="Integer" array="False" size=""/>
+            <output expression="&quot;ID do Usu&#225;rio: &quot;" newline="True"/>
+            <input variable="usuarioid"/>
+            <output expression="&quot;ID do Livro: &quot;" newline="True"/>
+            <input variable="livroid"/>
+            <output expression="&quot;Empr&#233;stimo realizado em: (data)&quot;" newline="True"/>
+            <comment text="defini&#231;&#227;o de limite de usu&#225;rios e livros (100)"/>
+            <if expression="(usuarioid &lt;= 100) &amp;&amp; (livroid &lt;=100)">
+                <then>
+                    <output expression="&quot;Empr&#233;stimo realizado com sucesso!&quot;" newline="True"/>
+                </then>
+                <else>
+                    <output expression="&quot;Usu&#225;rio ou livro inv&#225;lido!&quot;" newline="True"/>
+                </else>
+            </if>
+        </body>
+    </function>
+</flowgorithm>

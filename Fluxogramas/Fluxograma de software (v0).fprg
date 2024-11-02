@@ -1,0 +1,126 @@
+<?xml version="1.0"?>
+<flowgorithm fileversion="4.2">
+    <attributes>
+        <attribute name="name" value="Fluxograma de software"/>
+        <attribute name="authors" value="mathe"/>
+        <attribute name="about" value=""/>
+        <attribute name="saved" value="2024-09-03 12:44:43 "/>
+        <attribute name="created" value="bWF0aGU7QVNQSVJFLTM7MjAyNC0wOS0wMTsiMDc6NTQ6MTAgIjsyMjY1"/>
+        <attribute name="edited" value="bWF0aGU7QVNQSVJFLTM7MjAyNC0wOS0wMzsiMTI6NDQ6NDMgIjsyOzIzNzc="/>
+    </attributes>
+    <function name="Main" type="None" variable="">
+        <parameters/>
+        <body>
+            <comment text="Fluxograma do software&#13;&#10;"/>
+            <declare name="usuario, adm, cliente" type="Integer" array="False" size=""/>
+            <output expression="&quot;Ol&#225; querido(a)! Sou seu atendente virtual da (nome da biblioteca).&quot;" newline="True"/>
+            <output expression="&quot;Digite 1 para Funcion&#225;rio ou 2 para Cliente: &quot;" newline="True"/>
+            <input variable="usuario"/>
+            <while expression="usuario&gt;2">
+                <output expression="&quot;N&#227;o podemos identificar a resposta! Informe de acordo com o menu de respostas.&quot;" newline="True"/>
+                <output expression="&quot;Digite 1 para Funcion&#225;rio ou 2 para Cliente: &quot;" newline="True"/>
+                <input variable="usuario"/>
+            </while>
+            <declare name="cpf" type="Integer" array="False" size=""/>
+            <declare name="nome" type="String" array="False" size=""/>
+            <if expression="usuario=1">
+                <then>
+                    <comment text="Fluxo de funcion&#225;rio"/>
+                    <call expression="Funcionario"/>
+                </then>
+                <else>
+                    <comment text="fluxo de cliente"/>
+                    <output expression="&quot;Por favor, informe seu CPF.&quot;" newline="True"/>
+                    <input variable="cpf"/>
+                    <while expression="cpf&lt;10000000000">
+                        <output expression="&quot;Parece que voc&#234; esqueceu de colocar algum n&#250;mero! Revise e digite novamente.&quot;" newline="True"/>
+                        <input variable="cpf"/>
+                        <while expression="cpf&gt;100000000000">
+                            <output expression="&quot;Parece que voc&#234; colocou algum n&#250;mero a mais no seu cpf! Revie e digite novamente.&quot;" newline="True"/>
+                            <input variable="cpf"/>
+                        </while>
+                    </while>
+                    <while expression="cpf&gt;100000000000">
+                        <output expression="&quot;Parece que voc&#234; colocou algum n&#250;mero a mais no seu cpf! Revie e digite novamente.&quot;" newline="True"/>
+                        <input variable="cpf"/>
+                        <while expression="cpf&lt;10000000000">
+                            <output expression="&quot;Parece que voc&#234; esqueceu de colocar algum n&#250;mero! Revise e digite novamente.&quot;" newline="True"/>
+                            <input variable="cpf"/>
+                        </while>
+                    </while>
+                    <output expression="&quot;&#211;timo! Agora informe seu nome: &quot;" newline="True"/>
+                    <input variable="nome"/>
+                    <output expression="&quot;Ol&#225; &quot;&amp;nome" newline="True"/>
+                    <output expression="&quot;Bem-vindo(a) de volta!&quot;" newline="True"/>
+                    <comment text="Usuario escolher&#225; o servi&#231;o"/>
+                    <output expression="&quot;Como posso te ajudar?&quot;" newline="True"/>
+                    <output expression="&quot;Digite 1 para alugar um livro ou digite 2 para devolver um livro.&quot;" newline="True"/>
+                    <declare name="servi&#231;o" type="Integer" array="False" size=""/>
+                    <input variable="servi&#231;o"/>
+                    <if expression="servi&#231;o&gt;2">
+                        <then>
+                            <while expression="servi&#231;o&gt;2">
+                                <output expression="&quot;N&#227;o podemos identificar a resposta! Informe de acordo com o menu de respostas.&quot;" newline="True"/>
+                                <output expression="&quot;Digite 1 para alugar um livro ou digite 2 para devolver um livro.&quot;" newline="True"/>
+                                <input variable="servi&#231;o"/>
+                            </while>
+                        </then>
+                        <else>
+                            <while expression="servi&#231;o&lt;1">
+                                <output expression="&quot;N&#227;o podemos identificar a resposta! Informe de acordo com o menu de respostas.&quot;" newline="True"/>
+                                <output expression="&quot;Digite 1 para alugar um livro ou digite 2 para devolver um livro.&quot;" newline="True"/>
+                                <input variable="servi&#231;o"/>
+                            </while>
+                        </else>
+                    </if>
+                    <for variable="servi&#231;o" start="1" end="1" direction="inc" step="1">
+                        <output expression="&quot;Digite o nome do livro: &quot;" newline="True"/>
+                        <declare name="nomelivro" type="String" array="False" size=""/>
+                        <input variable="nomelivro"/>
+                        <output expression="&quot;Procurando...&quot;" newline="True"/>
+                        <output expression="&quot;Encontramos! Aqui est&#225; &quot;&amp;nomelivro" newline="True"/>
+                        <output expression="&quot;Livro registrado no &quot;&amp;cpf" newline="True"/>
+                        <output expression="&quot;O prazo &#233; de 2 semanas. Boa Leitura!&quot;" newline="True"/>
+                    </for>
+                    <output expression="&quot;Mais alguma coisa?&quot;" newline="True"/>
+                    <declare name="finaliza&#231;&#227;o" type="Integer" array="False" size=""/>
+                    <output expression="&quot;Digite 1 para alugar um livro, digite 2 para devolver um livro ou digite 3 para sair.&quot;" newline="True"/>
+                    <input variable="finaliza&#231;&#227;o"/>
+                    <while expression="finaliza&#231;&#227;o&lt;=2"/>
+                    <output expression="&quot;Obrigado!&quot;" newline="True"/>
+                </else>
+            </if>
+        </body>
+    </function>
+    <function name="Cliente" type="None" variable="">
+        <parameters/>
+        <body>
+            <output expression="&quot;Por favor, informe seu CPF.&quot;" newline="True"/>
+            <input variable="cpf"/>
+            <while expression="cpf&lt;10000000000">
+                <output expression="&quot;Parece que voc&#234; esqueceu de colocar algum n&#250;mero! Revise e digite novamente.&quot;" newline="True"/>
+                <input variable="cpf"/>
+                <while expression="cpf&gt;100000000000">
+                    <output expression="&quot;Parece que voc&#234; colocou algum n&#250;mero a mais no seu cpf! Revie e digite novamente.&quot;" newline="True"/>
+                    <input variable="cpf"/>
+                </while>
+            </while>
+            <while expression="cpf&gt;100000000000">
+                <output expression="&quot;Parece que voc&#234; colocou algum n&#250;mero a mais no seu cpf! Revie e digite novamente.&quot;" newline="True"/>
+                <input variable="cpf"/>
+                <while expression="cpf&lt;10000000000">
+                    <output expression="&quot;Parece que voc&#234; esqueceu de colocar algum n&#250;mero! Revise e digite novamente.&quot;" newline="True"/>
+                    <input variable="cpf"/>
+                </while>
+            </while>
+            <output expression="&quot;&#211;timo! Agora informe seu nome: &quot;" newline="True"/>
+            <input variable="nome"/>
+        </body>
+    </function>
+    <function name="Funcionario" type="None" variable="">
+        <parameters/>
+        <body>
+            <output expression="&quot;Voc&#234; &#233; um funcionario&quot;" newline="True"/>
+        </body>
+    </function>
+</flowgorithm>
